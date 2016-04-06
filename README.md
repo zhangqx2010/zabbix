@@ -3,6 +3,7 @@
 <h2>dhost_change_name.py</h2>
 zabbix 3.0.1</br>
 python 2.6.6</br>
+preinstall mysqlconnector http://dev.mysql.com/downloads/connector/python/</br>
 scripts update zabbix database to change discovered host display name</br>
 discovered host's default name is ip which is not user-friendly and recognizable</br>
 this scripts will change ip to zabbix agent.hostname</br>
