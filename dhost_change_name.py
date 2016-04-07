@@ -32,7 +32,7 @@ try:
         command = str("zabbix_get -s " + name + " -k agent.hostname")
         dhname = os.popen(command).readlines()[0].strip('\n')
         #update database
-        update_sql = str("update hosts set name='" + dhname + "' where host='" + hostid + "'")
+        update_sql = str("update hosts set host='" + dhname + "',name='" + dhname + "' where hostid='" + str(hostid) + "'")
         cur.execute(update_sql)
     cur.close()
     conn.commit()
