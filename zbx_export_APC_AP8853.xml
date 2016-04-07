@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>3.0</version>
-    <date>2016-04-01T07:37:36Z</date>
+    <date>2016-04-07T02:16:56Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -332,6 +332,45 @@
                     <logtimefmt/>
                 </item>
                 <item>
+                    <name>MaxCurrentRating (PDU MAX Apms)</name>
+                    <type>1</type>
+                    <snmp_community>public</snmp_community>
+                    <multiplier>0</multiplier>
+                    <snmp_oid>.1.3.6.1.4.1.318.1.1.26.4.2.1.9.1</snmp_oid>
+                    <key>rPDU2DevicePropertiesMaxCurrentRating.1</key>
+                    <delay>30</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>The maximum current rating, measured in Amps, for the Rack PDU</description>
+                    <inventory_link>0</inventory_link>
+                    <applications/>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
                     <name>PDU Device Status Energy</name>
                     <type>1</type>
                     <snmp_community>public</snmp_community>
@@ -344,7 +383,7 @@
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
-                    <units>kwh</units>
+                    <units>kw-h</units>
                     <delta>0</delta>
                     <snmpv3_contextname/>
                     <snmpv3_securityname/>
@@ -801,6 +840,16 @@ PDU phase being queried</description>
             <type>0</type>
             <dependencies/>
         </trigger>
+        <trigger>
+            <expression>({Template_APC_AP8853:rPDU2PhaseStatusVoltage.1.last(0)}&gt;244) or ({Template_APC_AP8853:rPDU2PhaseStatusVoltage.1.last(0)}&lt;198)</expression>
+            <name>InRow {HOSTNAME} Voltage Alert</name>
+            <url/>
+            <status>1</status>
+            <priority>4</priority>
+            <description/>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
     </triggers>
     <graphs>
         <graph>
@@ -882,7 +931,7 @@ PDU phase being queried</description>
                     <drawtype>0</drawtype>
                     <color>1A7C11</color>
                     <yaxisside>0</yaxisside>
-                    <calc_fnc>2</calc_fnc>
+                    <calc_fnc>7</calc_fnc>
                     <type>0</type>
                     <item>
                         <host>Template_APC_AP8853</host>
